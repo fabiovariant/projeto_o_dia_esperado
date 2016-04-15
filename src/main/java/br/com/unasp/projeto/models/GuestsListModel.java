@@ -1,13 +1,11 @@
 package br.com.unasp.projeto.models;
 
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import org.apache.commons.lang3.tuple.Pair;
 
 @Entity(name = "tb_invitation_data")
 public class GuestsListModel {

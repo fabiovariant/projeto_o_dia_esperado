@@ -5,12 +5,14 @@
  */
 package br.com.unasp.projeto.controllers.grooms;
 
+import br.com.unasp.projeto.models.GroomsModel;
 import br.com.unasp.projeto.services.grooms.GroomsService;
-import java.sql.Connection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  *
@@ -22,17 +24,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class GroomsController {
     @Autowired
     private GroomsService service;
-    @Autowired
-    Connection conn;
+
     
-    @RequestMapping(value = "/save_groom_name/{nm_gromm}")
-    public void saveNmGrooms(@PathVariable(value = "nm_gromm") String nmGroom){
-        service.saveNmGroom(conn, nmGroom);
+    @RequestMapping(method = RequestMethod.POST)
+    public void saveGrooms(@RequestBody GroomsModel groomsModel){
+        service.save(groomsModel);
     }
     
         
-    @RequestMapping(value = "/save_groom_name/{nm_bride}")
+    @RequestMapping(method = RequestMethod.PUT)
     public void saveNmBride(@PathVariable(value = "nm_bride") String nmBride){
-        service.saveNmGroom(conn, nmBride);
+        //service.saveNmGroom(conn, nmBride);
     }
 }

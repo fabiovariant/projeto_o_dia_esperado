@@ -2,19 +2,17 @@ package br.com.unasp.projeto.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "tb_grooms_data", schema = "public")
-public class GroomsModel {
-	
-	@Id
-	@GeneratedValue
-	@Column(name = "id_grooms")
-	private Integer id;	
+public class GroomsModel extends BaseModel{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Column(name = "nm_grooms")
 	private String nmBride;	
@@ -44,12 +42,6 @@ public class GroomsModel {
 	@Column(name = "id_providers")
 	private Integer idProviders;
 	
-	public Integer getId() {
-		return id;
-	}
-	public void setId(Integer id) {
-		this.id = id;
-	}
 	public String getNmBride() {
 		return nmBride;
 	}
