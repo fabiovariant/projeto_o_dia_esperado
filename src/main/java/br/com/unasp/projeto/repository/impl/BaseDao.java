@@ -56,8 +56,6 @@ public abstract class BaseDao<T extends BaseModel> {
 
         if (entity.getId() == null || entity.getId() == 0) {
             entityManager.persist(entity);
-        } else {
-            entityManager.merge(entity);
         }
     }
 
