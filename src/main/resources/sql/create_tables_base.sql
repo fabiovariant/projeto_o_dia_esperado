@@ -5,7 +5,6 @@ CREATE TABLE tb_grooms_data (
 	grooms_email	character varying UNIQUE,
 	gr_password		character varying
 );
-
 CREATE TABLE tb_ceremony_data (
 	id_grooms 			BIGSERIAL REFERENCES tb_grooms_data (id_grooms),
 	civil_date 			CHARACTER VARYING,

@@ -1,59 +1,54 @@
 package br.com.unasp.projeto.models;
 
-import java.sql.Date;
-import java.util.List;
-
 import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
+import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Table(name = "tb_dress_check_data")
+@Entity
 public class DressCheckModel {
 
 	@Id
-	@GeneratedValue
-	@Column(name = "id_dress_check")
-	private Integer idDressCheck;
-	
+	@Column(name = "id_grooms")
+	private Integer  idGrooms;
 	@Column(name = "dress_check")
-	private List<Date> dressCheck;
-	
+	private String  dressCheck;
 	@Column(name = "is_perfect")
-	private Boolean isPerfect;
-	
+	private String  isPerfect;
 	@Column(name = "take_date")
-	private Date takeDate;
-	
+	private String  takeDate;
 	@Column(name = "devolution_date")
-	private Date devolutionDate;
+	private String  devolutionDate;
 	
-	public Integer getIdDressCheck() {
-		return idDressCheck;
+	public Integer getIdGrooms() {
+		return idGrooms;
 	}
-	public void setIdDressCheck(Integer idDressCheck) {
-		this.idDressCheck = idDressCheck;
+	public void setIdGrooms(Integer idGrooms) {
+		this.idGrooms = idGrooms;
 	}
-	public List<Date> getDressCheck() {
+	public String getDressCheck() {
 		return dressCheck;
 	}
-	public void setDressCheck(List<Date> dressCheck) {
+	public void setDressCheck(String dressCheck) {
 		this.dressCheck = dressCheck;
 	}
-	public Boolean getIsPerfect() {
+	public String getIsPerfect() {
 		return isPerfect;
 	}
-	public void setIsPerfect(Boolean isPerfect) {
+	public void setIsPerfect(String isPerfect) {
 		this.isPerfect = isPerfect;
 	}
-	public Date getTakeDate() {
+	public String getTakeDate() {
 		return takeDate;
 	}
-	public void setTakeDate(Date takeDate) {
+	public void setTakeDate(String takeDate) {
 		this.takeDate = takeDate;
 	}
-	public Date getDevolutionDate() {
+	public String getDevolutionDate() {
 		return devolutionDate;
 	}
-	public void setDevolutionDate(Date devolutionDate) {
+	public void setDevolutionDate(String devolutionDate) {
 		this.devolutionDate = devolutionDate;
 	}
 }

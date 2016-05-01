@@ -2,51 +2,35 @@ package br.com.unasp.projeto.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+@Table(name = "tb_grooms_data")
 @Entity
-@Table(name = "tb_grooms_data", schema = "public")
-public class GroomsModel extends BaseModel{
+public class GroomsModel{
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
-	@Column(name = "nm_grooms")
-	private String nmBride;	
-
-	@Column(name = "nm_bride")
+	@Id
+	@SequenceGenerator( name = "CLIENTE_ID", sequenceName = "CLIENTE_SEQ", allocationSize = 1 )
+	@GeneratedValue( strategy = GenerationType.SEQUENCE, generator = "CLIENTE_ID" )
+	@Column(name = "id_grooms")
+	private Integer idGrooms;
+	@Column(name = "nm_groom")
 	private String nmGroom;
-
-	@Column(name = "id_ceremony")
-	private PartyModel idCeremony;	
-
-	@Column(name = "id_party")
-	private Integer idParty;
-
-	@Column(name = "id_dress_check")
-	private Integer idDressCheck;
-
-	@Column(name = "id_invitation")
-	@OneToMany
-	private Integer idInvitation;
-
-	@Column(name = "id_guests_list")
-	private Integer idGuestsList;
-
-	@Column(name = "id_notepad")
-	private Integer idNotepad;
-
-	@Column(name = "id_providers")
-	private Integer idProviders;
+	@Column(name = "nm_bridge")
+	private String nmBridge;
+	@Column(name = "grooms_email")
+	private String groomsEmail;
+	@Column(name = "gr_password")
+	private String grPassword;
 	
-	public String getNmBride() {
-		return nmBride;
+	public Integer getIdGrooms() {
+		return idGrooms;
 	}
-	public void setNmBride(String nmBride) {
-		this.nmBride = nmBride;
+	public void setIdGrooms(Integer idGrooms) {
+		this.idGrooms = idGrooms;
 	}
 	public String getNmGroom() {
 		return nmGroom;
@@ -54,47 +38,22 @@ public class GroomsModel extends BaseModel{
 	public void setNmGroom(String nmGroom) {
 		this.nmGroom = nmGroom;
 	}
-	public PartyModel getIdCeremony() {
-		return idCeremony;
+	public String getNmBridge() {
+		return nmBridge;
 	}
-	public void setIdCeremony(PartyModel idCeremony) {
-		this.idCeremony = idCeremony;
+	public void setNmBridge(String nmBridge) {
+		this.nmBridge = nmBridge;
 	}
-	public Integer getIdParty() {
-		return idParty;
+	public String getGroomsEmail() {
+		return groomsEmail;
 	}
-	public void setIdParty(Integer idParty) {
-		this.idParty = idParty;
+	public void setGroomsEmail(String groomsEmail) {
+		this.groomsEmail = groomsEmail;
 	}
-	public Integer getIdDressCheck() {
-		return idDressCheck;
+	public String getGrPassword() {
+		return grPassword;
 	}
-	public void setIdDressCheck(Integer idDressCheck) {
-		this.idDressCheck = idDressCheck;
-	}
-	public Integer getIdInvitation() {
-		return idInvitation;
-	}
-	public void setIdInvitation(Integer idInvitation) {
-		this.idInvitation = idInvitation;
-	}
-	public Integer getIdGuestsList() {
-		return idGuestsList;
-	}
-	public void setIdGuestsList(Integer idGuestsList) {
-		this.idGuestsList = idGuestsList;
-	}
-	public Integer getIdNotepad() {
-		return idNotepad;
-	}
-	public void setIdNotepad(Integer idNotepad) {
-		this.idNotepad = idNotepad;
-	}
-	public Integer getIdProviders() {
-		return idProviders;
-	}
-	public void setIdProviders(Integer idProviders) {
-		this.idProviders = idProviders;
-	}
-	
+	public void setGrPassword(String grPassword) {
+		this.grPassword = grPassword;
+	}	
 }

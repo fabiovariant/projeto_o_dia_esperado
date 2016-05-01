@@ -5,10 +5,13 @@
  */
 package br.com.unasp.projeto.services.party;
 
-/**
- *
- * @author fabio.silva.a2
- */
+import java.sql.SQLException;
+
+import br.com.unasp.projeto.models.PartyModel;
+
 public interface PartyService {
-    
+
+	public void save(PartyModel partyModel) throws ClassNotFoundException, SQLException;
+	
+	public PartyModel get(Integer groomsId);
 }

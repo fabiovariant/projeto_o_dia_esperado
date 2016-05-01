@@ -13,27 +13,33 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-/**
- *
- * @author fabio.silva.a2
- */
 
 @Controller
 @RequestMapping(value = "/grooms")
 public class GroomsController {
+	
     @Autowired
-    private GroomsService service;
+    private GroomsService groomsService;
 
     
     @RequestMapping(method = RequestMethod.POST)
-    public void saveGrooms(@RequestBody GroomsModel groomsModel){
-        service.save(groomsModel);
+    @ResponseBody
+    public GroomsModel saveGrooms(@RequestBody GroomsModel groomsModel){
+        return groomsService.save(groomsModel);
+    }
+
+    @RequestMapping(value = "/{id}",
+    				method = RequestMethod.GET)
+    @ResponseBody
+    public GroomsModel getGrooms(@PathVariable(value = "id") Integer idGrooms){
+    	return groomsService.get(idGrooms);
     }
     
-        
     @RequestMapping(method = RequestMethod.PUT)
-    public void saveNmBride(@PathVariable(value = "nm_bride") String nmBride){
-        //service.saveNmGroom(conn, nmBride);
+    @ResponseBody
+    public GroomsModel updateGroomsData(@RequestBody GroomsModel groomsModel){
+    	return groomsService.update(groomsModel);
     }
 }

@@ -2,59 +2,42 @@ package br.com.unasp.projeto.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
+import javax.persistence.Table;
 
-import br.com.unasp.projeto.models.GroomsModel;
-
+@Table(name = "tb_party_data")
 @Entity
 public class PartyModel {
 	
 	@Id
-	@Column(name = "id_party")
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer idParty;
-	
-	@Column(name = "tb_grooms_data_id")
-	@JoinColumn(name = "id", referencedColumnName="id")
-	private GroomsModel tbGroomsDataId;
-	
-	@Column(name = "drinks")
+	@Column(name="id_grooms")
+	private Integer idGrooms;
+	@Column(name="drinks")
 	private String drinks;
-	
-	@Column(name = "cake_candy")
+	@Column(name="cake_candy")
 	private String cakeCandy;
-	
-	@Column(name = "buffet")
+	@Column(name="buffet")
 	private String buffet;
-	
-	@Column(name = "car")
+	@Column(name="car")
 	private String car;
-	@Column(name = "decoration")
+	@Column(name="decoration")
 	private String decoration;
-	
-	@Column(name = "photo_and_video")
+	@Column(name="photo_and_video")
 	private String photoAndVideo;
-	
-	@Column(name = "locale")
+	@Column(name="locale")
 	private String locale;
-	
-	@Column(name = "safety")
+	@Column(name="safety")
 	private String safety;
-	
-	@Column(name = "sound")
+	@Column(name="sound")
 	private String sound;
-	
-	@Column(name = "valet")
+	@Column(name="valet")
 	private String valet;
 	
-	public GroomsModel getTbGroomsDataId() {
-		return tbGroomsDataId;
+	public Integer getIdGrooms() {
+		return idGrooms;
 	}
-	public void setTbGroomsDataId(GroomsModel tbGroomsDataId) {
-		this.tbGroomsDataId = tbGroomsDataId;
+	public void setIdGrooms(Integer idGrooms) {
+		this.idGrooms = idGrooms;
 	}
 	public String getDrinks() {
 		return drinks;
@@ -116,6 +99,4 @@ public class PartyModel {
 	public void setValet(String valet) {
 		this.valet = valet;
 	}
-	
-	
 }

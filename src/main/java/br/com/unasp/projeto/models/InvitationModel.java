@@ -1,27 +1,36 @@
 package br.com.unasp.projeto.models;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Table(name = "tb_invitation_data")
+@Entity
 public class InvitationModel {
 
+	@Id
+	@Column(name = "id_grooms")
+	private Integer idGrooms;
 	@Column(name = "invitation")
 	private String invitation;
-	
 	@Column(name = "menu")
 	private String menu;
-	
 	@Column(name = "decotarion_details")
-	private String decorationDetail;
-	
+	private String decotarionDetails;
 	@Column(name = "souvenirs")
 	private String souvenirs;
-	
 	@Column(name = "god_parents_gift")
 	private String godParentsGift;
-	
 	@Column(name = "reservation")
-	private String  reservation;
+	private String reservation;
 	
+	public Integer getIdGrooms() {
+		return idGrooms;
+	}
+	public void setIdGrooms(Integer idGrooms) {
+		this.idGrooms = idGrooms;
+	}
 	public String getInvitation() {
 		return invitation;
 	}
@@ -34,11 +43,11 @@ public class InvitationModel {
 	public void setMenu(String menu) {
 		this.menu = menu;
 	}
-	public String getDecorationDetail() {
-		return decorationDetail;
+	public String getDecotarionDetails() {
+		return decotarionDetails;
 	}
-	public void setDecorationDetail(String decorationDetail) {
-		this.decorationDetail = decorationDetail;
+	public void setDecotarionDetails(String decotarionDetails) {
+		this.decotarionDetails = decotarionDetails;
 	}
 	public String getSouvenirs() {
 		return souvenirs;
