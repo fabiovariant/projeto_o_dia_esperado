@@ -29,7 +29,7 @@ public class LoginServiceImpl implements LoginService {
 	@Override
 	public void forgotMyPassword(String email) {
 		GroomsModel groomsModel = loginDao.getByEmail(email);
-		//forgotEmailSender = new ForgotPasswordEmailSender(groomsModel.getGroomsEmail(), groomsModel.getGrPassword());
+		forgotEmailSender = new ForgotPasswordEmailSender(groomsModel);
 	}
 
 }
