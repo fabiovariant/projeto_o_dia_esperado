@@ -16,7 +16,6 @@ public class GroomsDaoImpl implements GroomsDao{
 	@Override
 	public GroomsModel get(Integer id){
     	GroomsModel groomsModel =  entityManager.find(GroomsModel.class, id);
-    	
     	return groomsModel;
 	}
 	
@@ -31,5 +30,4 @@ public class GroomsDaoImpl implements GroomsDao{
 	public GroomsModel update(GroomsModel groomsModel) {
 		return entityManager.merge(groomsModel);
 	}
-
 }

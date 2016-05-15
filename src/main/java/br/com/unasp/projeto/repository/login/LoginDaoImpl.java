@@ -17,17 +17,27 @@ public class LoginDaoImpl implements LoginDao {
 	
 	@Override
 	public GroomsModel doLogin(String email, String password) {
-
         try {
         	GroomsModel groomsModel = (GroomsModel) entityManager
         			.createQuery("SELECT u from GroomsModel u where u.groomsEmail = :userEmail and u.grPassword = :password")
                        .setParameter("userEmail", email)
                        .setParameter("password", password).getSingleResult();
-
             return groomsModel;
       } catch (NoResultException e) {
             return new GroomsModel();
       }
 	}
 
+	
+	@Override
+	public GroomsModel getByEmail(String email){
+		try {
+			GroomsModel groomsModel = (GroomsModel) entityManager
+					.createQuery("SELECT u FROM GroomsModel u WHERE u.groomsEmail = :userEmail")
+					.setParameter("userEmail", email).getSingleResult();
+			return groomsModel;
+		} catch (NoResultException e) {
+			return new GroomsModel();
+		}
+	}
 }

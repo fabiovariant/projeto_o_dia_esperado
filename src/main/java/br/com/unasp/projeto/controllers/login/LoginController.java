@@ -1,4 +1,4 @@
-package br.com.unasp.projeto.controllers.grooms;
+package br.com.unasp.projeto.controllers.login;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -7,17 +7,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import br.com.unasp.projeto.controllers.JsonResponse;
 import br.com.unasp.projeto.models.GroomsModel;
-import br.com.unasp.projeto.services.grooms.GroomsService;
 import br.com.unasp.projeto.services.login.LoginService;
 
 @Controller
 @RequestMapping(value = "/login")
 public class LoginController {
-	
-	@Autowired
-	GroomsService groomsService;
-	
 	@Autowired
 	LoginService loginService;
 
@@ -28,7 +24,13 @@ public class LoginController {
 		return loginService.doLogin(groomsEmail, grPassword);
 	}
 	
-	public GroomsModel forgotMyPassword(String groomsEmail){
-		return null;
+	@RequestMapping(value = "/password/{email}",
+					method = RequestMethod.POST)
+	@ResponseBody
+	public JsonResponse forgotMyPassword(@PathVariable("email") String groomsEmail){
+		loginService.forgotMyPassword(groomsEmail);
+		JsonResponse jsonResponse = new JsonResponse();
+		jsonResponse.setStatus(Boolean.TRUE);
+		return jsonResponse;
 	}
 }

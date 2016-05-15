@@ -1,6 +1,4 @@
-package br.com.unasp.projeto.controllers.grooms;
-
-import java.sql.SQLException;
+package br.com.unasp.projeto.controllers.party;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,10 +23,10 @@ public class PartyController {
 		return partyService.get(groomsId);
 	}
 	
-	@RequestMapping(method = RequestMethod.POST)
+	@RequestMapping(method = RequestMethod.PUT)
 	@ResponseBody
-	public void save(@ModelAttribute PartyModel partyModel) throws ClassNotFoundException, SQLException{
-		partyService.save(partyModel);
+	public PartyModel update(@ModelAttribute PartyModel partyModel){
+		return partyService.update(partyModel);
 	}
 	
 }

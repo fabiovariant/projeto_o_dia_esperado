@@ -1,7 +1,10 @@
 package br.com.unasp.projeto.mail;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.AddressException;
+
 public interface EmailSender {
 	
-	public void send(String toEmail);
-	public void setProperties();
+	public void send() throws AddressException, MessagingException;
+
 }

@@ -27,7 +27,7 @@ public class GroomsController {
     @RequestMapping(method = RequestMethod.POST)
     @ResponseBody
     public GroomsModel saveGrooms(@RequestBody GroomsModel groomsModel){
-        return groomsService.save(groomsModel);
+        return groomsService.saveOrUpdate(groomsModel);
     }
 
     @RequestMapping(value = "/{id}",
@@ -35,11 +35,5 @@ public class GroomsController {
     @ResponseBody
     public GroomsModel getGrooms(@PathVariable(value = "id") Integer idGrooms){
     	return groomsService.get(idGrooms);
-    }
-    
-    @RequestMapping(method = RequestMethod.PUT)
-    @ResponseBody
-    public GroomsModel updateGroomsData(@RequestBody GroomsModel groomsModel){
-    	return groomsService.update(groomsModel);
     }
 }

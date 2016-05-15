@@ -1,8 +1,5 @@
 package br.com.unasp.projeto.services.party;
 
-import java.sql.Connection;
-import java.sql.SQLException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,12 +12,18 @@ public class PartyServiceImpl implements PartyService{
 	@Autowired
 	PartyDao partyDao;
 	
-	Connection connection;
-	public void save(PartyModel partyModel) throws ClassNotFoundException, SQLException {
-		
+	@Override
+	public PartyModel get(Integer groomsId) {
+		return partyDao.get(groomsId);
 	}
 
-	public PartyModel get(Integer groomsId) {
-		return null;
+	@Override
+	public PartyModel update(PartyModel partyModel) {
+		return partyDao.update(partyModel);
+	}
+
+	@Override
+	public PartyModel save(PartyModel partyModel) {
+		return partyDao.save(partyModel);
 	}
 }
