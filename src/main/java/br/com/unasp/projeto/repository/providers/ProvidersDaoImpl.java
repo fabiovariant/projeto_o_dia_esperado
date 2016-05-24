@@ -4,6 +4,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import br.com.unasp.projeto.models.ProvidersModel;
 
@@ -26,6 +27,7 @@ public class ProvidersDaoImpl implements ProvidersDao {
 		return providersModel;
 	}
 
+	@Transactional
 	@Override
 	public ProvidersModel update(ProvidersModel providersModel) {
 		ProvidersModel providersModelUpdate = get(providersModel.getIdGrooms());
