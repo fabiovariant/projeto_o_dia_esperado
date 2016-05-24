@@ -28,7 +28,16 @@ public class ProvidersDaoImpl implements ProvidersDao {
 
 	@Override
 	public ProvidersModel update(ProvidersModel providersModel) {
-		return entityManager.merge(providersModel);
+		ProvidersModel providersModelUpdate = get(providersModel.getIdGrooms());
+		if(providersModelUpdate != null){
+			providersModelUpdate.setProviderName(providersModel.getProviderName());
+			providersModelUpdate.setArea(providersModel.getArea());
+			providersModelUpdate.setIsConfirmed(providersModel.getIsConfirmed());
+			providersModelUpdate.setProviderSite(providersModel.getProviderSite());
+			providersModelUpdate.setPrice(providersModel.getPrice());
+			providersModelUpdate.setProviderPhone(providersModel.getProviderPhone());
+		}
+		return providersModelUpdate;
 	}
 
 }

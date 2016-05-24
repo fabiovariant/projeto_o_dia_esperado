@@ -4,6 +4,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import br.com.unasp.projeto.models.DressCheckModel;
 
@@ -27,8 +28,16 @@ public class DressCheckDaoImpl implements DressCheckDao {
 		return dressCheckModel;
 	}
 
+	@Transactional
 	@Override
 	public DressCheckModel update(DressCheckModel dressCheckModel) {
-		return entityManager.merge(dressCheckModel);
+		DressCheckModel dressCheckModelUpdate = get(dressCheckModel.getIdGrooms());
+		if (dressCheckModelUpdate != null){
+			dressCheckModelUpdate.setDressCheck(dressCheckModel.getDressCheck());
+			dressCheckModelUpdate.setIsPerfect(dressCheckModel.getIsPerfect());
+			dressCheckModelUpdate.setTakeDate(dressCheckModel.getTakeDate());
+			dressCheckModelUpdate.setDevolutionDate(dressCheckModel.getDevolutionDate());
+		}
+		return dressCheckModelUpdate;
 	}
 }

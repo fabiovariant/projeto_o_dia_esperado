@@ -5,6 +5,7 @@ import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import br.com.unasp.projeto.models.GuestsListModel;
 
@@ -37,9 +38,16 @@ public class GuestListDaoImpl implements GuestListDao {
 		return guestsListModel;
 	}
 
+	@Transactional
 	@Override
-	public GuestsListModel update(GuestsListModel cuestsListModel) {
-		return entityManager.merge(cuestsListModel);
+	public GuestsListModel update(GuestsListModel guestsListModel) {
+		GuestsListModel guestsListModelUpdate = get(guestsListModel.getIdGrooms());
+		if(guestsListModel != null){
+			guestsListModelUpdate.setInvitedName(guestsListModel.getInvitedName());
+			guestsListModelUpdate.setEmailInvited(guestsListModel.getEmailInvited());
+			guestsListModelUpdate.setIsConfirmed(guestsListModel.getIsConfirmed());
+		}
+		return guestsListModelUpdate;
 	}
 
 }

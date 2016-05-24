@@ -7,6 +7,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import br.com.unasp.projeto.models.NotepadModel;
 
@@ -33,9 +34,14 @@ public class NotepadDaoImpl implements NotepadDao {
 		return notepadModel;
 	}
 
+	@Transactional
 	@Override
 	public NotepadModel update(NotepadModel notepadModel) {
-		return entityManager.merge(notepadModel);
+		NotepadModel notepadModelUpdate = entityManager.find(NotepadModel.class, notepadModel.getIdGrooms());
+		if(notepadModelUpdate != null){
+			notepadModelUpdate.setAnnotation(notepadModel.getAnnotation());
+		}
+		return notepadModelUpdate;
 	}
 
 }

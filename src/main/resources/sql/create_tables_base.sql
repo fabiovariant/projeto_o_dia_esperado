@@ -1,12 +1,12 @@
 CREATE TABLE tb_grooms_data (
-	id_grooms		BIGSERIAL PRIMARY KEY,
+	id_grooms		BIGSERIAL 				PRIMARY KEY		UNIQUE,
 	nm_groom		character varying,
 	nm_bridge 		character varying,
-	grooms_email	character varying UNIQUE,
+	grooms_email	character varying 		UNIQUE,
 	gr_password		character varying
 );
 CREATE TABLE tb_ceremony_data (
-	id_grooms 			BIGSERIAL REFERENCES tb_grooms_data (id_grooms),
+	id_grooms 			BIGSERIAL 				UNIQUE REFERENCES tb_grooms_data (id_grooms),
 	civil_date 			CHARACTER VARYING,
 	religious_date 		CHARACTER VARYING,
 	alliance 			CHARACTER VARYING,
@@ -20,7 +20,7 @@ CREATE TABLE tb_ceremony_data (
 	witnesses 			CHARACTER VARYING
 );
 CREATE TABLE tb_party_data (
-	id_grooms 			BIGSERIAL REFERENCES tb_grooms_data (id_grooms),
+	id_grooms 			BIGSERIAL 				UNIQUE REFERENCES tb_grooms_data (id_grooms),
 	drinks				CHARACTER VARYING,
 	cake_candy			CHARACTER VARYING,
 	buffet				CHARACTER VARYING,
@@ -33,14 +33,14 @@ CREATE TABLE tb_party_data (
 	valet				CHARACTER VARYING
 );
 CREATE TABLE tb_dress_check_data (
-	id_grooms 			BIGSERIAL REFERENCES tb_grooms_data (id_grooms),
+	id_grooms 			BIGSERIAL 				UNIQUE REFERENCES tb_grooms_data (id_grooms),
 	dress_check			character varying,
 	is_perfect			character varying,
 	take_date			character varying,
 	devolution_date		character varying
 );
 CREATE TABLE tb_invitation_data (
-	id_grooms 				BIGSERIAL REFERENCES tb_grooms_data (id_grooms),
+	id_grooms 				BIGSERIAL 				UNIQUE REFERENCES tb_grooms_data (id_grooms),
 	invitation				character varying,
 	menu					character varying,
 	decotarion_details		character varying,
@@ -49,17 +49,17 @@ CREATE TABLE tb_invitation_data (
 	reservation				character varying
 );
 CREATE TABLE tb_guests_list_data (
-	id_grooms 			BIGSERIAL REFERENCES tb_grooms_data (id_grooms),
+	id_grooms 			BIGSERIAL 				UNIQUE REFERENCES tb_grooms_data (id_grooms),
 	invited_name		character varying,
 	email_invited		character varying 	UNIQUE,
 	is_confirmed		character varying 	DEFAULT FALSE
 );
 CREATE TABLE tb_notepad_data (
-	id_grooms 			BIGSERIAL REFERENCES tb_grooms_data (id_grooms),
+	id_grooms 			BIGSERIAL 				REFERENCES tb_grooms_data (id_grooms),
 	annotation 			character varying
 );
 CREATE TABLE tb_providers_data (
-	id_grooms 			BIGSERIAL REFERENCES tb_grooms_data (id_grooms),
+	id_grooms 			BIGSERIAL 				UNIQUE REFERENCES tb_grooms_data (id_grooms),
 	provider_name		character varying,
 	area				character varying,
 	is_confirmed		character varying,

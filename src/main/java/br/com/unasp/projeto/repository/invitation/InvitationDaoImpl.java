@@ -4,6 +4,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import br.com.unasp.projeto.models.InvitationModel;
 
@@ -26,8 +27,18 @@ public class InvitationDaoImpl implements InvitationDao {
 		return invitationModel;
 	}
 
+	@Transactional
 	@Override
 	public InvitationModel update(InvitationModel invitationModel) {
-		return entityManager.merge(invitationModel);
+		InvitationModel invitationModelUpdate = get(invitationModel.getIdGrooms());
+		if(invitationModelUpdate != null){
+			invitationModelUpdate.setInvitation(invitationModel.getInvitation());
+			invitationModelUpdate.setMenu(invitationModel.getMenu());
+			invitationModelUpdate.setDecotarionDetails(invitationModel.getDecotarionDetails());
+			invitationModelUpdate.setSouvenirs(invitationModel.getSouvenirs());
+			invitationModelUpdate.setGodParentsGift(invitationModel.getGodParentsGift());
+			invitationModelUpdate.setReservation(invitationModel.getReservation());
+		}
+		return invitationModelUpdate;
 	}
 }

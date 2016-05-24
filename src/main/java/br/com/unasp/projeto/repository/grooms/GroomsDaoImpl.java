@@ -4,6 +4,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import br.com.unasp.projeto.models.GroomsModel;
 
@@ -19,6 +20,7 @@ public class GroomsDaoImpl implements GroomsDao{
     	return groomsModel;
 	}
 	
+	@Transactional
 	@Override
 	public GroomsModel save(GroomsModel groomsModel){
 		entityManager.persist(groomsModel);
@@ -28,6 +30,13 @@ public class GroomsDaoImpl implements GroomsDao{
 
 	@Override
 	public GroomsModel update(GroomsModel groomsModel) {
-		return entityManager.merge(groomsModel);
+		GroomsModel groomsModelUpdate = get(groomsModel.getIdGrooms());
+		if(groomsModelUpdate != null){
+			groomsModelUpdate.setNmGroom(groomsModel.getNmGroom());
+			groomsModelUpdate.setNmBridge(groomsModel.getNmBridge());
+			groomsModelUpdate.setGroomsEmail(groomsModel.getGroomsEmail());
+			groomsModelUpdate.setGrPassword(groomsModel.getGrPassword());
+		}
+		return groomsModelUpdate;
 	}
 }

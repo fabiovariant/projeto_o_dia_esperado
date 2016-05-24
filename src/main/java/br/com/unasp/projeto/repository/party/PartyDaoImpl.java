@@ -4,6 +4,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import br.com.unasp.projeto.models.PartyModel;
 
@@ -27,8 +28,22 @@ public class PartyDaoImpl implements PartyDao {
 		return partyModel;
 	}
 
+	@Transactional
 	@Override
 	public PartyModel update(PartyModel partyModel) {
-		return entityManager.merge(partyModel);
+		PartyModel partyModelUpdate = get(partyModel.getIdGrooms());
+		if(partyModelUpdate != null){
+			partyModelUpdate.setDrinks(partyModel.getDrinks());
+			partyModelUpdate.setCakeCandy(partyModel.getCakeCandy());
+			partyModelUpdate.setBuffet(partyModel.getBuffet());
+			partyModelUpdate.setCar(partyModel.getCar());
+			partyModelUpdate.setDecoration(partyModel.getDecoration());
+			partyModelUpdate.setPhotoAndVideo(partyModel.getPhotoAndVideo());
+			partyModelUpdate.setLocale(partyModel.getLocale());
+			partyModelUpdate.setSafety(partyModel.getSafety());
+			partyModelUpdate.setSound(partyModel.getSound());
+			partyModelUpdate.setValet(partyModel.getValet());
+		}
+		return partyModelUpdate;
 	}
 }
