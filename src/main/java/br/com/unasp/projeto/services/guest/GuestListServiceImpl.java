@@ -1,5 +1,7 @@
 package br.com.unasp.projeto.services.guest;
 
+import java.util.List;
+
 import javax.mail.MessagingException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,14 +32,17 @@ public class GuestListServiceImpl implements GuestListService{
 		try {
 			emailSender.send();
 		} catch (MessagingException e) {
-			System.out.println("Erro");
+			System.out.println("Erro" + e);
 		}
 	}
 
 	@Override
 	public void confirmGuest(String guestEmail) {
 		guestListDao.confirmGuest(guestEmail);
-		
 	}
-
+	
+	@Override
+	public List<GuestsListModel> getList(Integer idGrooms) {
+		return guestListDao.getList(idGrooms);
+	}
 }

@@ -35,7 +35,7 @@ CREATE TABLE tb_party_data (
 CREATE TABLE tb_dress_check_data (
 	id_grooms 			BIGSERIAL 				UNIQUE REFERENCES tb_grooms_data (id_grooms),
 	dress_check			character varying,
-	is_perfect			character varying,
+	is_perfect			boolean,
 	take_date			character varying,
 	devolution_date		character varying
 );
@@ -49,21 +49,30 @@ CREATE TABLE tb_invitation_data (
 	reservation				character varying
 );
 CREATE TABLE tb_guests_list_data (
-	id_grooms 			BIGSERIAL 				UNIQUE REFERENCES tb_grooms_data (id_grooms),
+	id_grooms 			BIGSERIAL 				 REFERENCES tb_grooms_data (id_grooms),
 	invited_name		character varying,
-	email_invited		character varying 	UNIQUE,
-	is_confirmed		character varying 	DEFAULT FALSE
+	email_invited		character varying,
+	is_confirmed		character varying 		 DEFAULT FALSE,
+	PRIMARY KEY(id_grooms, email_invited)
 );
 CREATE TABLE tb_notepad_data (
 	id_grooms 			BIGSERIAL 				REFERENCES tb_grooms_data (id_grooms),
 	annotation 			character varying
 );
 CREATE TABLE tb_providers_data (
-	id_grooms 			BIGSERIAL 				UNIQUE REFERENCES tb_grooms_data (id_grooms),
+	id_grooms 			BIGSERIAL 				REFERENCES tb_grooms_data (id_grooms),
 	provider_name		character varying,
 	area				character varying,
 	is_confirmed		character varying,
 	provider_site		character varying,
 	price				character varying,
 	provider_phone		character varying
+);
+
+CREATE TABLE tb_time_line_data(
+	id_grooms			BIGSERIAL    	 		REFERENCES tb_grooms_data (id_grooms),
+	location			character varying,
+	picture_text		character varying,
+	dt_upload			character varying,
+	PRIMARY KEY(id_grooms, location)		
 );

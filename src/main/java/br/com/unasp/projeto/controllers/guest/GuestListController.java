@@ -1,5 +1,7 @@
 package br.com.unasp.projeto.controllers.guest;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,8 +14,8 @@ import br.com.unasp.projeto.controllers.JsonResponse;
 import br.com.unasp.projeto.models.GuestsListModel;
 import br.com.unasp.projeto.services.guest.GuestListService;
 
-@Controller
 @RequestMapping(value = "/guest")
+@Controller
 public class GuestListController {
 
 	@Autowired
@@ -29,9 +31,10 @@ public class GuestListController {
 		return response;
 	}
 
-	@RequestMapping(method = RequestMethod.PUT)
+	@RequestMapping(value = "/{email}", 
+			        method = RequestMethod.PUT)
 	@ResponseBody
-	public JsonResponse confirmGuest(@PathVariable String guestEmail){
+	public JsonResponse confirmGuest(@PathVariable(value = "email") String guestEmail){
 		guestListService.confirmGuest(guestEmail);
 
 		JsonResponse response = new JsonResponse();
@@ -39,4 +42,10 @@ public class GuestListController {
 		return response;
 	}
 
+	@RequestMapping(value="/{id}", 
+					method = RequestMethod.GET)
+	@ResponseBody
+	public List<GuestsListModel> get(@PathVariable(value= "id") Integer idGrooms){
+		return guestListService.getList(idGrooms);
+	}
 }

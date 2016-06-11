@@ -22,8 +22,8 @@ public class GuestListEmailSender extends AbstractEmailSender implements EmailSe
 	public void send() throws AddressException, MessagingException {
 		String host = "smtp.gmail.com";
 		String port = "587";
-		String userName = "email";
-		String password = "password";
+		String userName = "fabiovariant2@gmail.com	";
+		String password = "papada";
 		String subject = "[Convite de casamento] " + groomsModel.getNmGroom() + " & " + groomsModel.getNmBridge();
 		String message = "email message";
 		sendHtmlEmail(host, port, userName, password, guestsListModel.getEmailInvited(), subject, message);

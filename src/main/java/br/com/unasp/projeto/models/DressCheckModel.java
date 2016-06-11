@@ -15,7 +15,7 @@ public class DressCheckModel {
 	@Column(name = "dress_check")
 	private String  dressCheck;
 	@Column(name = "is_perfect")
-	private String  isPerfect;
+	private Boolean  isPerfect;
 	@Column(name = "take_date")
 	private String  takeDate;
 	@Column(name = "devolution_date")
@@ -33,10 +33,10 @@ public class DressCheckModel {
 	public void setDressCheck(String dressCheck) {
 		this.dressCheck = dressCheck;
 	}
-	public String getIsPerfect() {
+	public Boolean getIsPerfect() {
 		return isPerfect;
 	}
-	public void setIsPerfect(String isPerfect) {
+	public void setIsPerfect(Boolean isPerfect) {
 		this.isPerfect = isPerfect;
 	}
 	public String getTakeDate() {

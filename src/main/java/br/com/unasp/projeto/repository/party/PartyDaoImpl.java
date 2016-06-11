@@ -15,8 +15,8 @@ public class PartyDaoImpl implements PartyDao {
     private EntityManager entityManager;
 	
 	@Override
-	public PartyModel get(Integer id) {
-		PartyModel partyModel =  entityManager.find(PartyModel.class, id);
+	public PartyModel get(Integer idGrooms) {
+		PartyModel partyModel =  entityManager.find(PartyModel.class, idGrooms);
     	
     	return partyModel;
 	}

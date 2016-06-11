@@ -13,8 +13,8 @@ public class PartyServiceImpl implements PartyService{
 	PartyDao partyDao;
 	
 	@Override
-	public PartyModel get(Integer groomsId) {
-		return partyDao.get(groomsId);
+	public PartyModel get(Integer idGrooms) {
+		return partyDao.get(idGrooms);
 	}
 
 	@Override

@@ -3,10 +3,14 @@ package br.com.unasp.projeto.models;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 import javax.persistence.Table;
+
+import br.com.unasp.projeto.models.idModels.GuestListId;
 
 @Table(name = "tb_guests_list_data")
 @Entity
+@IdClass(GuestListId.class)
 public class GuestsListModel {
 	
 	@Id
@@ -14,6 +18,7 @@ public class GuestsListModel {
 	private Integer idGrooms;
 	@Column(name = "invited_name")
 	private String invitedName;
+	@Id
 	@Column(name = "email_invited")
 	private String emailInvited;
 	@Column(name = "is_confirmed")

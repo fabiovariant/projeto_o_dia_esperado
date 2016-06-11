@@ -1,8 +1,12 @@
 package br.com.unasp.projeto.repository.guest;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,7 +29,17 @@ public class GuestListDaoImpl implements GuestListDao {
     	  
       }
 	}
-
+	
+	@Override
+	public List<GuestsListModel> getList(Integer idGrooms) {
+		List<GuestsListModel> guestsListModels = new ArrayList<GuestsListModel>();
+		TypedQuery<GuestsListModel> query = entityManager.createQuery("SELECT c FROM GuestsListModel c where c.idGrooms = :id", GuestsListModel.class)
+				.setParameter("id", idGrooms);
+		
+		 guestsListModels.addAll(query.getResultList());
+		return guestsListModels;
+	}
+	
 	@Override
 	public GuestsListModel get(Integer id) {
 		GuestsListModel groomsModel =  entityManager.find(GuestsListModel.class, id);
