@@ -23,7 +23,15 @@ public class GuestsListModel {
 	private String emailInvited;
 	@Column(name = "is_confirmed")
 	private Boolean isConfirmed;
+	@Column(name = "email_text")
+	private String emailText;
 	
+	public String getEmailText() {
+		return emailText;
+	}
+	public void setEmailText(String emailText) {
+		this.emailText = emailText;
+	}
 	public Integer getIdGrooms() {
 		return idGrooms;
 	}

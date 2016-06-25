@@ -8,7 +8,7 @@ import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
 
-import br.com.unasp.projeto.models.TimelineModel;
+import br.com.unasp.projeto.models.TimeLinePhotosModel;
 
 @Repository("timeLineDao")
 public class TimeLineDaoImpl implements TimeLineDao {
@@ -17,17 +17,17 @@ public class TimeLineDaoImpl implements TimeLineDao {
     private EntityManager entityManager;
 	
 	@Override
-	public List<TimelineModel> getPicturesList(Integer idGrooms) {
-		TypedQuery<TimelineModel> query =
-				entityManager.createQuery("SELECT c FROM TimelineModel c where c.idGrooms = :id", TimelineModel.class)
+	public List<TimeLinePhotosModel> getPicturesList(Integer idGrooms) {
+		TypedQuery<TimeLinePhotosModel> query =
+				entityManager.createQuery("SELECT c FROM TimeLinePhotosModel c where c.idGrooms = :id", TimeLinePhotosModel.class)
 				.setParameter("id", idGrooms);
-		List<TimelineModel> timeLineModel = query.getResultList();
+		List<TimeLinePhotosModel> timeLineModel = query.getResultList();
 		
 		return timeLineModel;
 	}
 
 	@Override
-	public void save(TimelineModel timelineModel) {
+	public void save(TimeLinePhotosModel timelineModel) {
 		entityManager.persist(timelineModel);
 	}
 

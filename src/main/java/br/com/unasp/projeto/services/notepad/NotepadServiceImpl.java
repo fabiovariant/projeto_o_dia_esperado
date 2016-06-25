@@ -25,8 +25,8 @@ public class NotepadServiceImpl implements NotepadService{
 	}
 
 	@Override
-	public NotepadModel save(NotepadModel notepadModel) {
-		return notepadDao.save(notepadModel);
+	public void save(List<NotepadModel> notepadModel) {
+		notepadDao.save(notepadModel);
 	}
 
 }

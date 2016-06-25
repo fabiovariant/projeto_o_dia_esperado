@@ -28,10 +28,9 @@ public class NotepadDaoImpl implements NotepadDao {
 	}
 
 	@Override
-	public NotepadModel save(NotepadModel notepadModel) {
+	public void save(List<NotepadModel> notepadModel) {
 		entityManager.persist(notepadModel);
 		entityManager.flush();
-		return notepadModel;
 	}
 
 	@Transactional

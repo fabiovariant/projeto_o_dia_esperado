@@ -12,7 +12,7 @@ public interface GuestListDao {
 
 	public GuestsListModel update(GuestsListModel guestsListModel);
 	
-	public void confirmGuest(String invitedEmail);
+	public void confirmGuest(String invitedEmail, Integer idGrooms);
 
 	public List<GuestsListModel> getList(Integer idGrooms);
 

@@ -8,7 +8,7 @@ public interface NotepadDao {
 
 	public List<NotepadModel> getNotepads(Integer groomsId) ;
 
-	public NotepadModel save(NotepadModel notepadModel);
+	public void save(List<NotepadModel> notepadModel);
 
 	public NotepadModel update(NotepadModel notepadModel);
 

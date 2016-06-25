@@ -8,7 +8,7 @@ public interface GuestListService {
 
 	public void inviteGuest(GuestsListModel guestsListModel);
 	
-	public void confirmGuest(String guestEmail);
+	public void confirmGuest(String guestEmail, Integer idGrooms);
 
 	public List<GuestsListModel> getList(Integer idGrooms);
 }

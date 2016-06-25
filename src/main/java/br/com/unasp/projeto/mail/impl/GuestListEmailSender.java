@@ -23,9 +23,11 @@ public class GuestListEmailSender extends AbstractEmailSender implements EmailSe
 		String host = "smtp.gmail.com";
 		String port = "587";
 		String userName = "fabiovariant2@gmail.com	";
-		String password = "papada";
+		String password = "@FabioSoujava1";
 		String subject = "[Convite de casamento] " + groomsModel.getNmGroom() + " & " + groomsModel.getNmBridge();
-		String message = "email message";
+		String message = guestsListModel.getEmailText() 
+				+ "<br/> <br/> <a href=\"http://localhost:8080/guest/confirm/" + guestsListModel.getEmailInvited()
+				+ "/"+guestsListModel.getIdGrooms() + "\">Confirme presença no evento! Clique aqui</a>";
 		sendHtmlEmail(host, port, userName, password, guestsListModel.getEmailInvited(), subject, message);
 		
 	}

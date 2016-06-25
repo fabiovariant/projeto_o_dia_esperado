@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import br.com.unasp.projeto.controllers.JsonResponse;
 import br.com.unasp.projeto.models.NotepadModel;
 import br.com.unasp.projeto.services.notepad.NotepadService;
 
@@ -29,7 +30,10 @@ public class NotepadController {
 	
 	@RequestMapping(method = RequestMethod.POST)
 	@ResponseBody
-	public NotepadModel save(@RequestBody NotepadModel notepadModel){
-		return notepadService.save(notepadModel);
+	public JsonResponse save(@RequestBody List<NotepadModel> notepadModel){
+		notepadService.save(notepadModel);
+		JsonResponse response = new JsonResponse();
+		response.setStatus(true);
+		return response;
 	}
 }

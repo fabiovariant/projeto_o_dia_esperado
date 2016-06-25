@@ -31,11 +31,11 @@ public class GuestListController {
 		return response;
 	}
 
-	@RequestMapping(value = "/{email}", 
-			        method = RequestMethod.PUT)
+	@RequestMapping(value = "/confirm/{email}/{idGrooms}", 
+			        method = RequestMethod.GET)
 	@ResponseBody
-	public JsonResponse confirmGuest(@PathVariable(value = "email") String guestEmail){
-		guestListService.confirmGuest(guestEmail);
+	public JsonResponse confirmGuest(@PathVariable(value = "email") String guestEmail, @PathVariable(value = "idGrooms") Integer idGrooms){
+		guestListService.confirmGuest(guestEmail, idGrooms);
 
 		JsonResponse response = new JsonResponse();
 		response.setStatus(Boolean.TRUE);

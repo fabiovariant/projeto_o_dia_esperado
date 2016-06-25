@@ -20,13 +20,15 @@ public class GuestListDaoImpl implements GuestListDao {
 	@PersistenceContext
     private EntityManager entityManager;
 	
+	@Transactional
 	@Override
-	public void confirmGuest(String invitedEmail) {
+	public void confirmGuest(String invitedEmail, Integer idGrooms) {
 	    try {
-	    	entityManager.createQuery("Update GuestsListModel u SET isConfirmed = true where u.emailInvited = :userEmail")
-	    		.setParameter("userEmail", invitedEmail).executeUpdate();
+	    	entityManager.createQuery("Update GuestsListModel u SET isConfirmed = true where u.emailInvited = :userEmail AND u.idGrooms = :idGrooms")
+	    		.setParameter("userEmail", invitedEmail)
+	    		.setParameter("idGrooms", idGrooms).executeUpdate();
       } catch (NoResultException e) {
-    	  
+    	  System.out.println("Email não encontrado");
       }
 	}
 	
@@ -46,9 +48,11 @@ public class GuestListDaoImpl implements GuestListDao {
     	return groomsModel;
 	}
 
+	@Transactional
 	@Override
 	public GuestsListModel save(GuestsListModel guestsListModel) {
 		entityManager.persist(guestsListModel);
+		entityManager.flush();
 		return guestsListModel;
 	}
 

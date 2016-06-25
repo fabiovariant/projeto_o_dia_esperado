@@ -10,5 +10,5 @@ public interface NotepadService {
 	
 	public NotepadModel update(NotepadModel notepadModel);
 	
-	public NotepadModel save(NotepadModel notepadModel);
+	public void save(List<NotepadModel> notepadModel);
 }

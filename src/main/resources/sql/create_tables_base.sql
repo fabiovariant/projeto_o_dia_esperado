@@ -21,6 +21,7 @@ CREATE TABLE tb_ceremony_data (
 );
 CREATE TABLE tb_party_data (
 	id_grooms 			BIGSERIAL 				UNIQUE REFERENCES tb_grooms_data (id_grooms),
+	party_date			CHARACTER VARYING,
 	drinks				CHARACTER VARYING,
 	cake_candy			CHARACTER VARYING,
 	buffet				CHARACTER VARYING,
@@ -35,7 +36,7 @@ CREATE TABLE tb_party_data (
 CREATE TABLE tb_dress_check_data (
 	id_grooms 			BIGSERIAL 				UNIQUE REFERENCES tb_grooms_data (id_grooms),
 	dress_check			character varying,
-	is_perfect			boolean,
+	perfect_date		character varying,
 	take_date			character varying,
 	devolution_date		character varying
 );
@@ -53,6 +54,7 @@ CREATE TABLE tb_guests_list_data (
 	invited_name		character varying,
 	email_invited		character varying,
 	is_confirmed		character varying 		 DEFAULT FALSE,
+	email_text			character varying,
 	PRIMARY KEY(id_grooms, email_invited)
 );
 CREATE TABLE tb_notepad_data (

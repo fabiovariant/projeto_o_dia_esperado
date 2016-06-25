@@ -26,5 +26,6 @@ public class DressCheckServiceImpl implements DressCheckService{
 	public DressCheckModel save(DressCheckModel dressCheckModel) {
 		return dressCheckDao.save(dressCheckModel);
 	}
+	
 
 }

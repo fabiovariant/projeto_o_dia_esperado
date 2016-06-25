@@ -34,9 +34,9 @@ public class DressCheckDaoImpl implements DressCheckDao {
 		DressCheckModel dressCheckModelUpdate = get(dressCheckModel.getIdGrooms());
 		if (dressCheckModelUpdate != null){
 			dressCheckModelUpdate.setDressCheck(dressCheckModel.getDressCheck());
-			dressCheckModelUpdate.setIsPerfect(dressCheckModel.getIsPerfect());
 			dressCheckModelUpdate.setTakeDate(dressCheckModel.getTakeDate());
 			dressCheckModelUpdate.setDevolutionDate(dressCheckModel.getDevolutionDate());
+			dressCheckModelUpdate.setPerfectDate(dressCheckModel.getPerfectDate());
 		}
 		return dressCheckModelUpdate;
 	}

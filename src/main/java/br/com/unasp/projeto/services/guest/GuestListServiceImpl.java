@@ -26,6 +26,7 @@ public class GuestListServiceImpl implements GuestListService{
 	
 	@Override
 	public void inviteGuest(GuestsListModel guestsListModel) {
+		guestsListModel.setIsConfirmed(false);
 		guestListDao.save(guestsListModel);
 		GroomsModel groomsModel = groomsDao.get(guestsListModel.getIdGrooms());
 		emailSender = new GuestListEmailSender(guestsListModel, groomsModel);
@@ -37,8 +38,8 @@ public class GuestListServiceImpl implements GuestListService{
 	}
 
 	@Override
-	public void confirmGuest(String guestEmail) {
-		guestListDao.confirmGuest(guestEmail);
+	public void confirmGuest(String guestEmail, Integer idGrooms) {
+		guestListDao.confirmGuest(guestEmail, idGrooms);
 	}
 	
 	@Override

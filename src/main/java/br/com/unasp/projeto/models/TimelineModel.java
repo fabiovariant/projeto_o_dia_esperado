@@ -1,51 +1,43 @@
 package br.com.unasp.projeto.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.IdClass;
-import javax.persistence.Table;
+import java.util.List;
 
-import br.com.unasp.projeto.models.idModels.TimelineModelId;
-
-@Table(name="tb_time_line_data")
-@Entity
-@IdClass(TimelineModelId.class)
 public class TimelineModel {
 
-	@Id
-	@Column(name = "id_grooms")
-	Integer idGrooms;
-	@Id
-	@Column(name = "location")
-	String location;
-	@Column(name="picture_text")
-	String pictureText;
-	@Column(name="dt_upload")
-	String date;
-	
+	private Integer idGrooms;
+	private String civilDate;
+	private String religiousDate;
+	private String perfectDressDate;
+	private List<TimeLinePhotosModel> photosModel;
+
 	public Integer getIdGrooms() {
 		return idGrooms;
 	}
 	public void setIdGrooms(Integer idGrooms) {
 		this.idGrooms = idGrooms;
 	}
-	public String getLocation() {
-		return location;
+	public String getCivilDate() {
+		return civilDate;
 	}
-	public void setLocation(String location) {
-		this.location = location;
+	public void setCivilDate(String civilDate) {
+		this.civilDate = civilDate;
 	}
-	public String getDate() {
-		return date;
+	public String getReligiousDate() {
+		return religiousDate;
 	}
-	public void setDate(String date) {
-		this.date = date;
+	public void setReligiousDate(String religiousDate) {
+		this.religiousDate = religiousDate;
 	}
-	public String getPictureText() {
-		return pictureText;
+	public String getPerfectDressDate() {
+		return perfectDressDate;
 	}
-	public void setPictureText(String pictureText) {
-		this.pictureText = pictureText;
+	public void setPerfectDressDate(String perfectDressDate) {
+		this.perfectDressDate = perfectDressDate;
+	}
+	public List<TimeLinePhotosModel> getPhotosModel() {
+		return photosModel;
+	}
+	public void setPhotosModel(List<TimeLinePhotosModel> photosModel) {
+		this.photosModel = photosModel;
 	}
 }

@@ -32,7 +32,15 @@ public class PartyModel {
 	private String sound;
 	@Column(name="valet")
 	private String valet;
+	@Column(name="party_date")
+	private String partyDate;
 	
+	public String getPartyDate() {
+		return partyDate;
+	}
+	public void setPartyDate(String partyDate) {
+		this.partyDate = partyDate;
+	}
 	public Integer getIdGrooms() {
 		return idGrooms;
 	}

@@ -39,7 +39,7 @@ public abstract class AbstractEmailSender {
         msg.setRecipients(Message.RecipientType.TO, toAddresses);
         msg.setSubject(subject);
         msg.setSentDate(new Date());
-        msg.setContent(message, "text/html");
+        msg.setContent(message, "text/html; charset=utf-8");
         Transport.send(msg);
  
     }
